@@ -44,12 +44,17 @@ public class TelaLogin extends javax.swing.JFrame {
         lblShow = new javax.swing.JLabel();
         jCheckBox2 = new javax.swing.JCheckBox();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblCadastro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -148,11 +153,12 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 271, -1, 27));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 153, 153));
-        jButton1.setText("LOGIN");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 316, 290, 36));
+        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(0, 153, 153));
+        btnLogin.setText("LOGIN");
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 316, 290, 36));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(199, 226, 255));
@@ -160,11 +166,16 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel11.setText("Não tem uma conta?");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 363, 164, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Cadastre-se");
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 363, 120, -1));
+        lblCadastro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        lblCadastro.setText("Cadastre-se");
+        lblCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCadastroMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 363, 120, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 450, 450));
 
@@ -191,6 +202,25 @@ public class TelaLogin extends javax.swing.JFrame {
         lblShow.setVisible(false);
         lblShow.setEnabled(false);
     }//GEN-LAST:event_lblShowMouseClicked
+
+    private void lblCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCadastroMouseClicked
+        TelaCadastro objTelaCadastro = new TelaCadastro();
+        objTelaCadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblCadastroMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        for(double i = 0.0;i <= 1.0; i = i+0.1){
+            String val = i + "";
+            float f  = Float.valueOf(val);
+            this.setOpacity(f);
+            try{
+                Thread.sleep(50);
+            }catch(InterruptedException e){
+                
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -228,12 +258,11 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -243,6 +272,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblCadastro;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblHide;
     private javax.swing.JLabel lblShow;
