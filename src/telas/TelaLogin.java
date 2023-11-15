@@ -190,7 +190,6 @@ public class TelaLogin extends javax.swing.JFrame {
         lblHide.setEnabled(true);
         lblShow.setVisible(false);
         lblShow.setEnabled(false);
-
     }//GEN-LAST:event_lblShowMouseClicked
 
     /**
