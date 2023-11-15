@@ -16,7 +16,6 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
-
     }
 
     /**
