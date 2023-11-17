@@ -5,9 +5,10 @@
  */
 package telas;
 
+import java.util.List;
+import javax.swing.JOptionPane;
 import model.bean.Usuario;
 import model.dao.UsuarioDAO;
-
 
 /**
  *
@@ -21,6 +22,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro() {
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,31 +228,56 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLoginMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for(double i = 0.0;i <= 1.0; i = i+0.1){
+        for (double i = 0.0; i <= 1.0; i = i + 0.1) {
             String val = i + "";
-            float f  = Float.valueOf(val);
+            float f = Float.valueOf(val);
             this.setOpacity(f);
-            try{
+            try {
                 Thread.sleep(50);
-            }catch(InterruptedException e){
-               
+            } catch (InterruptedException e) {
+
             }
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        Usuario objUsuario = new Usuario();
         String user = txtUser.getText();
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
-        
-        objUsuario.setUserName(user);
-        objUsuario.setEmail(email);
-        objUsuario.setSenha(senha);
-        
+        if (txtUser.getText().trim().equals("") || txtEmail.getText().trim().equals("") || txtSenha.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            return;
+        }
         UsuarioDAO objUsuarioDao = new UsuarioDAO();
-        objUsuarioDao.cadastraUsuario(objUsuario);
+        List<Usuario> usuarios = objUsuarioDao.leitura();
+        for (Usuario objUsuario : usuarios) {
+            if (objUsuario.getEmail().equals(email) && objUsuario.getUserName().equals(user)) {
+                JOptionPane.showMessageDialog(null, "Username e Email informados ja possuem um cadastro!");
+                txtUser.setText("");
+                txtEmail.setText("");
+                return;
+            } else if (objUsuario.getEmail().equals(email)) {
+                JOptionPane.showMessageDialog(null, "O email informado ja possui um cadastro!");
+                txtEmail.setText("");
+                return;
+            } else if (objUsuario.getUserName().equals(user)) {
+                JOptionPane.showMessageDialog(null, "Username informado ja possui um cadastro!");
+                txtUser.setText("");
+                return;
+            }
+            objUsuario.setUserName(user);
+            objUsuario.setEmail(email);
+            objUsuario.setSenha(senha);
+            objUsuarioDao.cadastraUsuario(objUsuario);
+            limparCampos();
+        }
     }//GEN-LAST:event_btnCadastroActionPerformed
+
+    public void limparCampos() {
+        txtEmail.setText("");
+        txtSenha.setText("");
+        txtUser.setText("");
+    }
 
     /**
      * @param args the command line arguments
