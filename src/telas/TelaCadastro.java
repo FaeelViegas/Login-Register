@@ -5,6 +5,8 @@
  */
 package telas;
 
+import model.bean.Usuario;
+
 
 /**
  *
@@ -31,7 +33,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtUser = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         txtEmail = new javax.swing.JTextField();
         lblClose = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -77,11 +79,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         txtUser.setBorder(null);
         jPanel2.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 280, 30));
 
-        txtPassword.setBackground(new java.awt.Color(0, 153, 153));
-        txtPassword.setFont(txtPassword.getFont());
-        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setBorder(null);
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 280, 30));
+        txtSenha.setBackground(new java.awt.Color(0, 153, 153));
+        txtSenha.setFont(txtSenha.getFont());
+        txtSenha.setForeground(new java.awt.Color(255, 255, 255));
+        txtSenha.setBorder(null);
+        jPanel2.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 280, 30));
 
         txtEmail.setBackground(new java.awt.Color(0, 153, 153));
         txtEmail.setFont(txtEmail.getFont());
@@ -154,6 +156,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         btnCadastro.setForeground(new java.awt.Color(0, 153, 153));
         btnCadastro.setText("CADASTRE-SE");
         btnCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 290, 36));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -196,7 +203,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void lblHideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHideMouseClicked
-        txtPassword.setEchoChar((char) 0);
+        txtSenha.setEchoChar((char) 0);
         lblHide.setVisible(false);
         lblHide.setEnabled(false);
         lblShow.setVisible(true);
@@ -204,7 +211,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHideMouseClicked
 
     private void lblShowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMouseClicked
-        txtPassword.setEchoChar((char) 8226);
+        txtSenha.setEchoChar((char) 8226);
         lblHide.setVisible(true);
         lblHide.setEnabled(true);
         lblShow.setVisible(false);
@@ -229,6 +236,17 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        Usuario objUsuario = new Usuario();
+        String user = txtUser.getText();
+        String email = txtEmail.getText();
+        String senha = txtSenha.getText();
+        
+        objUsuario.setUserName(user);
+        objUsuario.setEmail(email);
+        objUsuario.setSenha(senha);
+    }//GEN-LAST:event_btnCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,7 +304,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblShow;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
