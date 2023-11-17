@@ -6,6 +6,7 @@
 package telas;
 
 import model.bean.Usuario;
+import model.dao.UsuarioDAO;
 
 
 /**
@@ -246,6 +247,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         objUsuario.setUserName(user);
         objUsuario.setEmail(email);
         objUsuario.setSenha(senha);
+        
+        UsuarioDAO objUsuarioDao = new UsuarioDAO();
+        objUsuarioDao.cadastraUsuario(objUsuario);
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     /**
