@@ -8,7 +8,10 @@ package model.dao;
 import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.bean.Usuario;
 
@@ -33,5 +36,30 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("CADASTRO DE USUARIO:"+e);
         }
+    }
+    
+    public List<Usuario> leitura(){
+        List<Usuario> usuarios = new ArrayList<>();
+        try {
+            Connection conexao = Conexao.connect();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            stmt = conexao.prepareStatement("SELECT * FROM USUARIOS");
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                Usuario objUsuario = new Usuario();
+                objUsuario.setIdUsuario(rs.getInt("ID_USUARIO"));
+                objUsuario.setUserName(rs.getString("USER_NAME"));
+                objUsuario.setEmail(rs.getString("EMAIL"));
+                objUsuario.setSenha(rs.getString("SENHA"));
+                usuarios.add(objUsuario);
+            }
+            rs.close();
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            System.out.println("Lista Usuarios:"+e);
+        }
+        return usuarios;
     }
 }
