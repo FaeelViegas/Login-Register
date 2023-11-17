@@ -5,8 +5,10 @@
  */
 package telas;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import model.bean.Usuario;
 import model.dao.UsuarioDAO;
 
@@ -56,6 +58,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CADASTRO");
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -80,19 +83,19 @@ public class TelaCadastro extends javax.swing.JFrame {
         txtUser.setFont(txtUser.getFont());
         txtUser.setForeground(new java.awt.Color(255, 255, 255));
         txtUser.setBorder(null);
-        jPanel2.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 280, 30));
+        jPanel2.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 280, 30));
 
         txtSenha.setBackground(new java.awt.Color(0, 153, 153));
         txtSenha.setFont(txtSenha.getFont());
         txtSenha.setForeground(new java.awt.Color(255, 255, 255));
         txtSenha.setBorder(null);
-        jPanel2.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 280, 30));
+        jPanel2.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 280, 30));
 
         txtEmail.setBackground(new java.awt.Color(0, 153, 153));
         txtEmail.setFont(txtEmail.getFont());
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
         txtEmail.setBorder(null);
-        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 280, 30));
+        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 280, 30));
 
         lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Close_1.png"))); // NOI18N
         lblClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -121,8 +124,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 369, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("_________________________________________");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 292, 30));
+        jLabel5.setText("_________________________________________________________");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 380, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/User.png"))); // NOI18N
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
@@ -133,8 +136,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 369, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("_________________________________________");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 295, 30));
+        jLabel8.setText("_________________________________________________________");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 380, 30));
 
         lblHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Hide.png"))); // NOI18N
         lblHide.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -184,8 +187,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel2.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 120, -1));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("_________________________________________");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 295, 30));
+        jLabel9.setText("_________________________________________________________");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 380, 30));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(199, 226, 255));
@@ -228,7 +231,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLoginMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for (double i = 0.0; i <= 1.0; i = i + 0.1) {
+        for (double i = 0.0; i <= 1.0; i = i + 0.2) {
             String val = i + "";
             float f = Float.valueOf(val);
             this.setOpacity(f);
@@ -265,14 +268,15 @@ public class TelaCadastro extends javax.swing.JFrame {
                 txtUser.setText("");
                 return;
             }
-            objUsuario.setUserName(user);
-            objUsuario.setEmail(email);
-            objUsuario.setSenha(senha);
-            objUsuarioDao.cadastraUsuario(objUsuario);
-            limparCampos();
-        }
-    }//GEN-LAST:event_btnCadastroActionPerformed
 
+        }
+        Usuario objUsuario = new Usuario();
+        objUsuario.setUserName(user);
+        objUsuario.setEmail(email);
+        objUsuario.setSenha(senha);
+        objUsuarioDao.cadastraUsuario(objUsuario);
+        limparCampos();
+    }//GEN-LAST:event_btnCadastroActionPerformed
     public void limparCampos() {
         txtEmail.setText("");
         txtSenha.setText("");
