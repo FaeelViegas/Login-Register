@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package projetologin;
+import com.formdev.flatlaf.FlatLightLaf;
 import telas.TelaLogin;
 /**
  *
@@ -15,6 +16,7 @@ public class ProjetoLogin {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        FlatLightLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaLogin().setVisible(true);

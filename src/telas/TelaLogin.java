@@ -23,7 +23,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
-
+        Usuario objUsuario = new Usuario();
     }
 
     /**
@@ -57,6 +57,7 @@ public class TelaLogin extends javax.swing.JFrame {
         lblCadastro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LOGIN");
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -247,6 +248,8 @@ public class TelaLogin extends javax.swing.JFrame {
         boolean encontrado = false;
         for (Usuario objUsuario : usuarios) {
             if (objUsuario.getUserName().equals(user) && objUsuario.getSenha().equals(senha)) {
+                int id = objUsuario.getIdUsuario();
+                objUsuario.setIdLogin(id);
                 encontrado = true;
                 objUsuario.setUserName(user);
                 TelaUsuario objTelaUsuario = new TelaUsuario();

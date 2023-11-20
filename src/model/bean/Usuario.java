@@ -14,15 +14,18 @@ public class Usuario {
     private String userName;
     private String email;
     private String senha;
+    private static int idLogin;
+
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String userName, String email, String senha) {
+    public Usuario(int idUsuario, String userName, String email, String senha,int idLogin) {
         this.idUsuario = idUsuario;
         this.userName = userName;
         this.email = email;
         this.senha = senha;
+        Usuario.idLogin = idLogin;
     }
 
     public int getIdUsuario() {
@@ -56,5 +59,11 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+    public int getIdLogin() {
+        return idLogin;
+    }
+
+    public void setIdLogin(int idLogin) {
+        this.idLogin = idLogin;
+    }
 }
