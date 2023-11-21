@@ -1,5 +1,5 @@
 # Login-Register
-Projeto de estudo desenvolvido em Java que utiliza a API gráfica Swing, foi desenvolvida uma de cadastro e uma tela de login, a aplicação é integarada ao banco de dados onde os dados dos usuarios cadastrados ficam armazenados.
+Projeto de estudo desenvolvido em Java que utiliza a API gráfica Swing, foi desenvolvida uma de cadastro e uma tela de login, a aplicação é integrada ao banco de dados onde os dados dos usuarios cadastrados ficam armazenados.
 <p>
   Blibioteca utilizada
   <a href="https://downloads.mysql.com/archives/c-j/">JDBC 1.5.47</a>.
